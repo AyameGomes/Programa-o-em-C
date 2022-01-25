@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 struct NO
 {
@@ -60,7 +61,7 @@ lista *insere(lista *L, int elemento)
     return L;
 }
 
-lista *remove(lista *L, int elemento)
+lista *remover(lista *L, int elemento)
 {
     lista *pre, *lixo;
 
@@ -81,6 +82,34 @@ lista *remove(lista *L, int elemento)
     return L;
 }
 
+void imprime(lista *L)
+{
+    lista *aux;
+
+    aux = L;
+    while (aux != NULL)
+    {
+        printf(" %d |", aux->info);
+        aux = aux->prox;
+    }
+}
+
 void main()
 {
+    lista *L;
+    L = NULL;
+    int num;
+
+    printf("Digite um número: \n");
+    scanf("%d", &num);
+
+    while (num != 0)
+    {
+        L = insere(L, num);
+        printf("Digite um número: \n");
+        scanf("%d", &num);
+    }
+
+    printf("\n Lista: \n");
+    imprime(L);
 }
